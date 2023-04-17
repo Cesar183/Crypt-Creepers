@@ -13,6 +13,7 @@ public class Player : MonoBehaviour
     [SerializeField] Transform bulletPrefab;
     bool gunLoaded = true;
     [SerializeField] float fireRate = 2;
+    [SerializeField] int health = 10;
     void Start()
     {
         
@@ -49,5 +50,12 @@ public class Player : MonoBehaviour
         yield return new WaitForSeconds(1/fireRate);
         gunLoaded = true;
     }
-    
+    public void TakeDamage()
+    {
+        health--;
+        if(health <= 0)
+        {
+            //Game over
+        }
+    }
 }

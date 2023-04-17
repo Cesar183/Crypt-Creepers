@@ -19,5 +19,17 @@ public class Enemy : MonoBehaviour
     public void TakeDamage()
     {
         health--;
+        if(health <= 0)
+        {
+            Destroy(gameObject);
+        }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            collision.GetComponent<Player>().TakeDamage();
+            
+        }
     }
 }
