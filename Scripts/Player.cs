@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     //[SerializeField] Camera camera;
     [SerializeField] Transform bulletPrefab;
     bool gunLoaded = true;
+    [SerializeField] float fireRate = 2;
     void Start()
     {
         
@@ -45,7 +46,7 @@ public class Player : MonoBehaviour
     }
     IEnumerator ReloadGun()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(1/fireRate);
         gunLoaded = true;
     }
     
