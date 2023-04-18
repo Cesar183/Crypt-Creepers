@@ -4,13 +4,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Intance;
+    public static GameManager Instance;
+    public int difficulty = 1;
     [SerializeField] int time = 30;
     private void Awake()
     {
-        if(Intance == null)
+        if(Instance == null)
         {
-            Intance = this;
+            Instance = this;
         }
     }
     void Start()
