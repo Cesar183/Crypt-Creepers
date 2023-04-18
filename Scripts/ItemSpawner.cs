@@ -1,0 +1,24 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class ItemSpawner : MonoBehaviour
+{
+    [SerializeField] GameObject checkPointPrefab;
+    [SerializeField] int checkpointSpawnDelay = 10;
+    [SerializeField] float spawnRadius = 7;
+    void Start()
+    {
+        StartCoroutine(SpawnCheckpointRoutine());
+    }
+    IEnumerator SpawnCheckpointRoutine()
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(checkpointSpawnDelay);
+            Vector2 randomPosition = Random.insideUnitCircle * spawnRadius;
+            Instantiate(checkPointPrefab, randomPosition, Quaternion.identity);
+        }
+        
+    }
+}
