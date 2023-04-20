@@ -14,6 +14,9 @@ public class Player : MonoBehaviour
     bool gunLoaded = true;
     [SerializeField] float fireRate = 2;
     [SerializeField] int health = 10;
+    bool powerShotEnabled;
+    [SerializeField] bool invulnerable;
+    [SerializeField] float invulnerableTime = 3;
     void Start()
     {
         
@@ -41,7 +44,11 @@ public class Player : MonoBehaviour
         if (JoystickDerecho.sharedInstance.joystick.Direction != Vector2.zero && gunLoaded) //Input.GetMouseButton(0) || 
         {
             gunLoaded = false;
-            Instantiate(bulletPrefab, transform.position, targetRotation);
+            Transform bulletclone = Instantiate(bulletPrefab, transform.position, targetRotation);
+            if(powerShotEnabled)
+            {
+                bulletclone.GetComponent<Bullet>().powerShot = true;
+            }
             StartCoroutine(ReloadGun());
         }
     }
@@ -52,10 +59,39 @@ public class Player : MonoBehaviour
     }
     public void TakeDamage()
     {
+        if(invulnerable)
+        {
+            return;
+        }
         health--;
+        invulnerable = true;
+        StartCoroutine(MakeVulnerableAgain());
         if(health <= 0)
         {
             //Game over
+        }
+    }
+    IEnumerator MakeVulnerableAgain()
+    {
+        yield return new WaitForSeconds(invulnerableTime);
+        invulnerable = false;
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "PowerUp")
+        {
+            switch(collision.GetComponent<PowerUp>().powerUpType)
+            {
+                case PowerUp.PowerUpType.FireRateIncrease:
+                    //Incrementar cadencia de diparo
+                    fireRate++;
+                    break;
+                case PowerUp.PowerUpType.PowerShot:
+                    //Activar super disparo
+                    powerShotEnabled = true;
+                    break;
+            }
+            Destroy(collision.gameObject);
         }
     }
 }

@@ -7,6 +7,7 @@ public class Enemy : MonoBehaviour
     Transform player;
     [SerializeField] int health = 1;
     [SerializeField] float speed = 1;
+    [SerializeField] int scorePoints = 100;
     private void Start()
     {
         player = FindObjectOfType<Player>().transform;
@@ -24,6 +25,7 @@ public class Enemy : MonoBehaviour
         health--;
         if(health <= 0)
         {
+            GameManager.Instance.Score += scorePoints;
             Destroy(gameObject);
         }
     }
