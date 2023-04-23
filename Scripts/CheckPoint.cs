@@ -9,7 +9,7 @@ public class CheckPoint : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            GameManager.Instance.time += addTime;
+            GameManager.sharedInstance.time += addTime;
             Destroy(gameObject);
         }
     }

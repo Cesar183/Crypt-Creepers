@@ -17,6 +17,15 @@ public class Player : MonoBehaviour
     bool powerShotEnabled;
     [SerializeField] bool invulnerable;
     [SerializeField] float invulnerableTime = 3;
+    [SerializeField] Animator anim;
+    [SerializeField] SpriteRenderer spriteRenderer;
+    public int Health{
+        get => health;
+        set{
+            health = value;
+            UIManager.sharedInstance.UpdaeUIHealth(health);
+        }
+    }
     void Start()
     {
         
@@ -51,6 +60,15 @@ public class Player : MonoBehaviour
             }
             StartCoroutine(ReloadGun());
         }
+        anim.SetFloat("Speed", moveDirection.magnitude);
+        if(aim.position.x > transform.position.x)
+        {
+            spriteRenderer.flipX = true;
+        }
+        else if(aim.position.x < transform.position.x)
+        {
+            spriteRenderer.flipX = false;
+        }
     }
     IEnumerator ReloadGun()
     {
@@ -63,12 +81,13 @@ public class Player : MonoBehaviour
         {
             return;
         }
-        health--;
+        Health--;
         invulnerable = true;
         StartCoroutine(MakeVulnerableAgain());
-        if(health <= 0)
+        if(Health <= 0)
         {
-            //Game over
+            GameManager.sharedInstance.gameOver = true;
+            UIManager.sharedInstance.ShowGameOverScreen();
         }
     }
     IEnumerator MakeVulnerableAgain()

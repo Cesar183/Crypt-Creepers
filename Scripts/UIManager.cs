@@ -9,7 +9,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text timeText;
     [SerializeField] Text finalScore;
-    [SerializeField] GameObject gameOverScreen;
+    public GameObject gameOverScreen;
     
     private void Awake()
     {
@@ -22,7 +22,7 @@ public class UIManager : MonoBehaviour
     {
         scoreText.text = newScore.ToString();
     }
-    public void UpdaeUIHealt(int newHealth)
+    public void UpdaeUIHealth(int newHealth)
     {
         healthText.text = newHealth.ToString();
     }
@@ -33,7 +33,7 @@ public class UIManager : MonoBehaviour
     public void ShowGameOverScreen()
     {
         gameOverScreen.SetActive(true);
-        finalScore.text = "SCORE: " + GameManager.Instance.Score;
+        finalScore.text = "SCORE: " + GameManager.sharedInstance.Score;
     }
     void Start()
     {

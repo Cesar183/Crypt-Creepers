@@ -25,7 +25,7 @@ public class Enemy : MonoBehaviour
         health--;
         if(health <= 0)
         {
-            GameManager.Instance.Score += scorePoints;
+            GameManager.sharedInstance.Score += scorePoints;
             Destroy(gameObject);
         }
     }

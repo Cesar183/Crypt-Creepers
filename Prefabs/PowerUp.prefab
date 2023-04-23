@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 827211442620640511}
   - component: {fileID: 457386665661346953}
-  - component: {fileID: 2187250966359508810}
   - component: {fileID: 1572299927516416699}
+  - component: {fileID: 3140575595468826288}
   m_Layer: 0
   m_Name: PowerUp
   m_TagString: PowerUp
@@ -75,8 +75,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
-  m_Color: {r: 0.032395888, g: 0.77254903, b: 0.9811321, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 2883f1c314ed5b3488caf422f4f0ea11, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -86,22 +86,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!58 &2187250966359508810
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5267551520931156236}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.1
 --- !u!114 &1572299927516416699
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -115,3 +99,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerUpType: 0
+--- !u!70 &3140575595468826288
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5267551520931156236}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.009884596, y: 0.014826894}
+  m_Size: {x: 0.27427042, y: 0.51150036}
+  m_Direction: 0
