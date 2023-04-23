@@ -6,7 +6,7 @@ public class Water : MonoBehaviour
 {
     Player player;
     [SerializeField] float originalSpeed;
-    [SerializeField] float speedReductionRatio = 0.5f;
+    [SerializeField] float speedCambioRatio = 0.5f;
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -17,7 +17,7 @@ public class Water : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            player.speed *= speedReductionRatio;
+            player.speed *= speedCambioRatio;
         }
     }
     private void OnTriggerExit2D(Collider2D collision)
