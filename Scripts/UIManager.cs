@@ -10,6 +10,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text timeText;
     [SerializeField] Text finalScore;
     public GameObject gameOverScreen;
+    public GameObject menuScreen;
     
     private void Awake()
     {

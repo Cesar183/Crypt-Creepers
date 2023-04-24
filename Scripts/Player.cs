@@ -19,6 +19,7 @@ public class Player : MonoBehaviour
     [SerializeField] float invulnerableTime = 3;
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;
+    [SerializeField] float blinkRate = 1;
     public int Health{
         get => health;
         set{
@@ -28,7 +29,7 @@ public class Player : MonoBehaviour
     }
     void Start()
     {
-        
+        UIManager.sharedInstance.UpdaeUIHealth(health);
     }
 
     // Update is called once per frame
@@ -92,9 +93,23 @@ public class Player : MonoBehaviour
     }
     IEnumerator MakeVulnerableAgain()
     {
+        StartCoroutine(BlinkRountine());
         yield return new WaitForSeconds(invulnerableTime);
         invulnerable = false;
     }
+    IEnumerator BlinkRountine()
+    {
+        int t = 10;
+        while(t > 0)
+        {
+            spriteRenderer.enabled = false;
+            yield return new WaitForSeconds(t * blinkRate);
+            spriteRenderer.enabled = true;
+            yield return new WaitForSeconds(t * blinkRate);
+            t --;
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "PowerUp")

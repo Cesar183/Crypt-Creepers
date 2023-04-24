@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         StartCoroutine(CountdownRoutine());
+        UIManager.sharedInstance.UpdateUIScore(score);
     }
 
     // Update is called once per frame
@@ -44,6 +45,7 @@ public class GameManager : MonoBehaviour
         {
             yield return new WaitForSeconds(1);
             time--;
+            UIManager.sharedInstance.UpdateUITime(time);
         }
         gameOver = true;
         UIManager.sharedInstance.ShowGameOverScreen();
@@ -52,5 +54,22 @@ public class GameManager : MonoBehaviour
     {
         UIManager.sharedInstance.gameOverScreen.SetActive(false);
         SceneManager.LoadScene("Game");
+    }
+    public void PlayGame()
+    {
+        //UIManager.sharedInstance.menuScreen.SetActive(false);
+        SceneManager.LoadScene("Game");
+    }
+    public void MenuGame()
+    {
+        SceneManager.LoadScene("MenuScene");
+    }
+    public void ExitGame()
+    {
+        #if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+        #else
+            Application.Quit();
+        #endif
     }
 }
