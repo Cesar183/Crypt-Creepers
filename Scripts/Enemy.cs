@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] int health = 1;
     [SerializeField] float speed = 1;
     [SerializeField] int scorePoints = 100;
+    [SerializeField] AudioClip impactClip;
     private void Start()
     {
         player = FindObjectOfType<Player>().transform;
@@ -18,15 +19,16 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Vector2 direction = player.position - transform.position;
-        transform.position += (Vector3)direction * Time.deltaTime * 1;
+        transform.position += (Vector3)direction.normalized * Time.deltaTime * 2;
     }
     public void TakeDamage()
     {
         health--;
+        AudioSource.PlayClipAtPoint(impactClip, transform.position);
         if(health <= 0)
         {
             GameManager.sharedInstance.Score += scorePoints;
-            Destroy(gameObject);
+            Destroy(gameObject, 0.2f);
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)

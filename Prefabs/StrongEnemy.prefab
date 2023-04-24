@@ -206,8 +206,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
-  speed: 1
+  speed: 30
   scorePoints: 100
+  impactClip: {fileID: 8300000, guid: de9e33dbe81a91342af9c9c7fdbd5680, type: 3}
 --- !u!61 &4446724886644333215
 BoxCollider2D:
   m_ObjectHideFlags: 0

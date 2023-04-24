@@ -10,6 +10,7 @@ public class GameManager : MonoBehaviour
     public int time = 30;
     public bool gameOver;
     [SerializeField] int score;
+    [SerializeField] AudioClip audioButton;
     public int Score{
         get => score;
         set {
@@ -53,19 +54,23 @@ public class GameManager : MonoBehaviour
     public void PlayAgain()
     {
         UIManager.sharedInstance.gameOverScreen.SetActive(false);
+        AudioSource.PlayClipAtPoint(audioButton, transform.position);
         SceneManager.LoadScene("Game");
     }
     public void PlayGame()
     {
         //UIManager.sharedInstance.menuScreen.SetActive(false);
+        AudioSource.PlayClipAtPoint(audioButton, transform.position);
         SceneManager.LoadScene("Game");
     }
     public void MenuGame()
     {
+        AudioSource.PlayClipAtPoint(audioButton, transform.position);
         SceneManager.LoadScene("MenuScene");
     }
     public void ExitGame()
     {
+        AudioSource.PlayClipAtPoint(audioButton, transform.position);
         #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
         #else

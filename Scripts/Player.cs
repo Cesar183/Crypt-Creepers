@@ -20,6 +20,7 @@ public class Player : MonoBehaviour
     [SerializeField] Animator anim;
     [SerializeField] SpriteRenderer spriteRenderer;
     [SerializeField] float blinkRate = 1;
+    [SerializeField] AudioClip collectedClip;
     public int Health{
         get => health;
         set{
@@ -84,6 +85,8 @@ public class Player : MonoBehaviour
         }
         Health--;
         invulnerable = true;
+        fireRate = 2;
+        powerShotEnabled = false;
         StartCoroutine(MakeVulnerableAgain());
         if(Health <= 0)
         {
@@ -125,6 +128,7 @@ public class Player : MonoBehaviour
                     powerShotEnabled = true;
                     break;
             }
+            AudioSource.PlayClipAtPoint(collectedClip, transform.position);
             Destroy(collision.gameObject);
         }
     }
