@@ -19,7 +19,7 @@ public class Enemy : MonoBehaviour
     private void Update()
     {
         Vector2 direction = player.position - transform.position;
-        transform.position += (Vector3)direction.normalized * Time.deltaTime * 2;
+        transform.position += (Vector3)direction.normalized * Time.deltaTime * 1;
     }
     public void TakeDamage()
     {

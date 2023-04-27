@@ -18,11 +18,15 @@ public class SceneChanger : MonoBehaviour
     public void SceneMenu()
     {
         AudioSource.PlayClipAtPoint(audioButton, transform.position);
-        Invoke("MenuScene", 0.3f);
+        Invoke("LoadMenuScene", 0.3f);
     }
     void LoadMenuScene()
     {
         SceneManager.LoadScene("MenuScene");
+    }
+    public void SceneGameOver()
+    {
+        SceneManager.LoadScene("GameOver");
     }
     public void ExitGame()
     {

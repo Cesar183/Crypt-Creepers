@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     IEnumerator CountdownRoutine()
     {
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
             UIManager.sharedInstance.UpdateUITime(time);
         }
         gameOver = true;
-        UIManager.sharedInstance.ShowGameOverScreen();
+        SceneManager.LoadScene("GameOver");
     }
     public void PlayAgain()
     {

@@ -5,7 +5,7 @@ using UnityEngine;
 public class Water : MonoBehaviour
 {
     Player player;
-    [SerializeField] float originalSpeed;
+    float originalSpeed;
     [SerializeField] float speedCambioRatio = 0.5f;
     void Start()
     {

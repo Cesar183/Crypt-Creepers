@@ -8,7 +8,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] Text healthText;
     [SerializeField] Text scoreText;
     [SerializeField] Text timeText;
-    [SerializeField] Text finalScore;
+    
     public GameObject gameOverScreen;
     public GameObject menuScreen;
     
@@ -31,11 +31,7 @@ public class UIManager : MonoBehaviour
     {
         timeText.text = newTime.ToString();
     }
-    public void ShowGameOverScreen()
-    {
-        gameOverScreen.SetActive(true);
-        finalScore.text = "SCORE: " + GameManager.sharedInstance.Score;
-    }
+    
     void Start()
     {
         

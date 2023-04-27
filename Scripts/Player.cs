@@ -91,7 +91,7 @@ public class Player : MonoBehaviour
         if(Health <= 0)
         {
             GameManager.sharedInstance.gameOver = true;
-            UIManager.sharedInstance.ShowGameOverScreen();
+            //UIManager.sharedInstance.ShowGameOverScreen();
         }
     }
     IEnumerator MakeVulnerableAgain()
